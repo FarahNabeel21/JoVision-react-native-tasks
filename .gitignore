@@ -72,3 +72,4 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+components/MyClassComponent_Task17.js

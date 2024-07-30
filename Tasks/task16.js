@@ -8,11 +8,9 @@ const Task16 = () => {
     return(
 
         <View style={styles.container}>
-              {/* Button to toggle name visibility */}
-           <Button title={showName ? "Hide" : "Show"} onPress={onPressLearnMore}  color="#841584"
-           
+            
+           <Button title={"Show"} onPress={onPressLearnMore}  color="#841584"
   accessibilityLabel="Learn more about this purple button" />
-       {/* Conditional rendering of the name */}
        {showName && <Text style={styles.name}>Farah Nabeel</Text>}
         </View>
     );
