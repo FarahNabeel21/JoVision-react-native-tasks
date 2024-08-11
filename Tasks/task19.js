@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
-import MyClassPage from '../Components/MyClassPage'; 
+import MyClassPage from '../Components/MyClassComponent_task19'; 
 
 const Task19 = () => {
   const [showClassPage, setShowClassPage] = useState(false);
