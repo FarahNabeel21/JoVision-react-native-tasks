@@ -8,7 +8,7 @@ const Task20 = () => {
   return (
     <View style={styles.container}>
       <Button 
-        title={showClassPage ? "Hide" : "Show"} 
+        title= "Show" 
         onPress={() => setShowClassPage(!showClassPage)} 
       />
       {showClassPage && <MyClassPage/>}

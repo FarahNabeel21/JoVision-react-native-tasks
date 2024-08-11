@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 class MyClassPage extends Component{
 componentDidMount(){
-    console.log("is loading ->>>");
+    console.log("is loading ->");
 }
 
 componentWillUnmount(){

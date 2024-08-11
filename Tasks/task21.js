@@ -12,7 +12,6 @@ return(
     x && <MyFunctionpage/>
 }
 
-
 </View>
 )
 
