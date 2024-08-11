@@ -26,7 +26,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 //import Task16 from './Tasks/task16';
 //import Task19 from './Tasks/task19';
-import Task19 from './Tasks/task19';
+import Task20 from './Tasks/task20';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -67,7 +67,7 @@ function App(): React.JSX.Element {
 
   return (
     //<Task19></Task19>
-    <Task19></Task19>
+    <Task20></Task20>
   );
 }
 

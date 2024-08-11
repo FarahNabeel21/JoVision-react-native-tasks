@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Button, StyleSheet } from 'react-native';
-import MyClassPage20 from '../Components/MyClassPage20'; // Ensure this path is correct based on your file structure
+import MyClassPage from '../Components/MyClassComponent_task20';
 
 const Task20 = () => {
   const [showClassPage, setShowClassPage] = useState(false);
@@ -11,7 +11,7 @@ const Task20 = () => {
         title={showClassPage ? "Hide" : "Show"} 
         onPress={() => setShowClassPage(!showClassPage)} 
       />
-      {showClassPage && <MyClassPage20 />}
+      {showClassPage && <MyClassPage/>}
     </View>
   );
 };
