@@ -28,8 +28,8 @@ import {
 //import Task19 from './Tasks/task19';
 //import Task20 from './Tasks/task20';
 //import App from './Tasks/task21'
-import Task22 from './Tasks/task22';
-
+//import Task22 from './Tasks/task22';
+import Task23 from './Tasks/task23';
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -74,8 +74,8 @@ function App(): React.JSX.Element {
     //<Task19></Task19>
    //<Task20></Task20>
   //<Task21/>
-<Task22></Task22>
-
+//<Task22></Task22>
+<Task23></Task23>
   );
 }
 
