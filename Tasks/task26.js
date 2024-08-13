@@ -53,14 +53,14 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '80%',
+    width: '70%',
     marginBottom: 20,
   },
   resultContainer: {
     marginTop: 20,
   },
   text: {
-    fontSize: 20,
+    fontSize: 22,
     color: 'black',
   },
 });
