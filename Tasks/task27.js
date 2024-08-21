@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { View, Image, Button, Alert, StyleSheet } from 'react-native';
 
 const Task27 = () => {
-  // State to keep track of the currently displayed image
+
   const [currentImage, setCurrentImage] = useState(require('../Resource/image1.jpg'));
 
-  // Function to handle button press
   const handleButtonPress = () => {
-    // Show an alert with options to pick an image
+
     Alert.alert(
       'Choose an Image',
       'Pick the number of the image you want to display:',
