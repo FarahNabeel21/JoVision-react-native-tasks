@@ -25,15 +25,15 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 //import Task16 from './Tasks/task16';
-import Task18 from './Tasks/task18';
+//import Task18 from './Tasks/task18';
 //import Task20 from './Tasks/task20';
-import Task21 from './Tasks/task21'
+//import Task21 from './Tasks/task21'
 //import Task22 from './Tasks/task22';
-import Task23 from './Tasks/task23';
+//import Task23 from './Tasks/task23';
 //import Task24 from './Tasks/task24'
 //import Task25 from "./Tasks/task25";
 //import Task26 from "./Tasks/task26";
-//import Task27 from "./Tasks/task27";
+import Task27 from "./Tasks/task27";
 import Task from "./Tasks/tasktrain";
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -84,8 +84,8 @@ function App(): React.JSX.Element {
 //<Task24/>
 //<Task25/>
 //<Task26/>
-//<Task27></Task27>
-<Task></Task>
+<Task27></Task27>
+//<Task></Task>
 );
 }
 
