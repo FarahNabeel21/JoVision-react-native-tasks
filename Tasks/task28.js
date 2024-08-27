@@ -3,7 +3,7 @@ import { View, FlatList, Image, Alert, StyleSheet ,TouchableOpacity} from 'react
 
 const Task28 = () => {
 
-[image,setimage]= React.useState( [
+[images,setimage]= React.useState( [
     require('../Resource/image1.jpg'),
     require('../Resource/image2.png'),
     require('../Resource/image3.png'),
@@ -17,10 +17,8 @@ const Task28 = () => {
   ]);
 
   const handlePress = (i) => {
-    Alert.alert('You have selected image: ');
+    Alert.alert(`You have selected image: ${i+1}`);
   };
-
-
   const renderItem = ({ item, index }) => (
     <TouchableOpacity onPress={() => handlePress(index)}>
       <Image source={item} style={styles.image} />
@@ -30,7 +28,7 @@ const Task28 = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={image}
+        data={images}
         renderItem={renderItem}
         keyExtractor={(index) => index}
         horizontal
