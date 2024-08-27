@@ -1,56 +1,45 @@
 import React, { useRef, useState } from 'react';
-import { View, Image, FlatList, Alert, StyleSheet, Button, Pressable, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
-const initialImages = [
-  require('../Resource/image1.jpg'),
-  require('../Resource/image2.png'),
-  require('../Resource/image3.png'),
-  require('../Resource/image4.jpg'),
-  require('../Resource/image5.jpg'),
-  require('../Resource/image6.jpg'),
-  require('../Resource/image7.jpeg'),
-  require('../Resource/image8.jpeg'),
-  require('../Resource/image9.png'),
-  require('../Resource/image10.jpeg')
-];
+import { View, FlatList, Image, Pressable, Alert, StyleSheet, Button, Text } from 'react-native';
+import Dialog from 'react-native-dialog';
 
 const Task30 = () => {
-  const [images, setImages] = useState(initialImages);
+  const initialImages = [
+    require('../Resource/image1.jpg'),
+    require('../Resource/image2.png'),
+    require('../Resource/image3.png'),
+    require('../Resource/image4.jpg'),
+    require('../Resource/image5.jpg'),
+    require('../Resource/image6.jpg'),
+    require('../Resource/image7.jpeg'),
+    require('../Resource/image8.jpeg'),
+    require('../Resource/image9.png'),
+    require('../Resource/image10.jpeg'),
+  ];
+
   const flatListRef = useRef(null);
-  const [dialogVisible, setDialogVisible] = useState(false);
-  const [index, setIndex] = useState('');
+  const [images, setImages] = useState(initialImages);
+  const [visible, setVisible] = useState(false);
+  const [inputIndex, setInputIndex] = useState('');
 
   const handlePress = (index) => {
     Alert.alert(`You have selected image: ${index + 1}`);
   };
 
   const handleScrollToIndex = () => {
-    Alert.prompt(
-      "Scroll to Image",
-      "Enter the index of the image (1-10):",
-      [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-        {
-          text: "OK",
-          onPress: (input) => {
-            const parsedIndex = parseInt(input, 10) - 1;
-            if (!isNaN(parsedIndex) && parsedIndex >= 0 && parsedIndex < images.length) {
-              flatListRef.current?.scrollToIndex({ animated: true, index: parsedIndex });
-            } else {
-              Alert.alert("Invalid index", "Please enter a valid index number between 1 and 10.");
-            }
-          },
-        },
-      ],
-      "plain-text"
-    );
+    const parsedIndex = parseInt(inputIndex, 10) - 1;
+    if (parsedIndex >= 0 && parsedIndex < images.length) {
+      flatListRef.current.scrollToIndex({
+        animated: true,
+        index: parsedIndex,
+        viewPosition: 0.5,
+      });
+      setVisible(false);
+    } else {
+      Alert.alert("Invalid Index", "Please enter a valid index between 1 and 10.");
+    }
   };
 
-  const handleRemoveImage = (indexToRemove) => {
+  const handleRemove = (index) => {
     Alert.alert(
       "Remove Image",
       "Are you sure you want to remove this image?",
@@ -62,7 +51,8 @@ const Task30 = () => {
         {
           text: "OK",
           onPress: () => {
-            setImages((prevImages) => prevImages.filter((_, index) => index !== indexToRemove));
+            const newImages = images.filter((_, i) => i !== index);
+            setImages(newImages);
           },
         },
       ]
@@ -70,19 +60,18 @@ const Task30 = () => {
   };
 
   const renderItem = ({ item, index }) => (
-    <View style={styles.item}>
-      <Pressable onPress={() => handlePress(index)} style={styles.imageWrapper}>
+    <View style={styles.imageContainer}>
+      <Pressable onPress={() => handlePress(index)}>
         <Image source={item} style={styles.image} />
-        <TouchableOpacity style={styles.iconContainer} onPress={() => handleRemoveImage(index)}>
-          <Icon name="remove-circle" size={24} color="red" />
-        </TouchableOpacity>
+      </Pressable>
+      <Pressable style={styles.removeButton} onPress={() => handleRemove(index)}>
+        <Text style={styles.removeButtonText}>Remove</Text>
       </Pressable>
     </View>
   );
 
   return (
     <View style={styles.container}>
-      <Button title="Scroll to image" onPress={handleScrollToIndex} />
       <FlatList
         ref={flatListRef}
         data={images}
@@ -91,6 +80,22 @@ const Task30 = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
       />
+      <Button title="Scroll to Image" onPress={() => setVisible(true)} />
+
+      <Dialog.Container visible={visible}>
+        <Dialog.Title>Scroll to Image</Dialog.Title>
+        <Dialog.Description>
+          Enter the index of the image (1-10):
+        </Dialog.Description>
+        <Dialog.Input
+          placeholder="Index"
+          keyboardType="numeric"
+          value={inputIndex}
+          onChangeText={setInputIndex}
+        />
+        <Dialog.Button label="Cancel" onPress={() => setVisible(false)} />
+        <Dialog.Button label="OK" onPress={handleScrollToIndex} />
+      </Dialog.Container>
     </View>
   );
 };
@@ -100,24 +105,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 50,
+    padding: 20,
   },
-  item: {
-    marginHorizontal: 10,
-  },
-  imageWrapper: {
+  imageContainer: {
     position: 'relative',
+    marginRight: 10,
   },
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 10,
+    width: 150,
+    height: 150,
+    borderRadius: 8,
   },
-  iconContainer: {
+  removeButton: {
     position: 'absolute',
-    top: 0,
-    right: 0,
-    padding: 5,
+    top: 5,
+    right: 5,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    borderRadius: 10,
+    paddingVertical: 2,
+    paddingHorizontal: 8,
+  },
+  removeButtonText: {
+    color: 'white',
+    fontSize: 12,
   },
 });
 

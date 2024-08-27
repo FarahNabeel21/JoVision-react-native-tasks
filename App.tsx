@@ -94,7 +94,8 @@ function App(): React.JSX.Element {
 //<Task36></Task36>
 //<Task29></Task29>
 //<Task30></Task30>
-<Task28></Task28>
+//<Task29></Task29>
+<Task30></Task30>
 );
 }
 

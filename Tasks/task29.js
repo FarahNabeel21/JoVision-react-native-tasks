@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { View, FlatList, Image, Pressable, Alert, StyleSheet, Button, TextInput } from 'react-native';
+import { View, FlatList, Image, Pressable, Alert, StyleSheet, Button } from 'react-native';
+import Dialog from 'react-native-dialog';
 
-const App = () => {
+const Task29= () => {
   const images = [
- 
     require('../Resource/image1.jpg'),
     require('../Resource/image2.png'),
     require('../Resource/image3.png'),
@@ -17,36 +17,25 @@ const App = () => {
   ];
 
   const flatListRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  const [inputIndex, setInputIndex] = useState('');
+
   const handlePress = (index) => {
     Alert.alert(`You have selected image: ${index + 1}`);
   };
+
   const handleScrollToIndex = () => {
-    Alert.prompt(
-      "Scroll to Image",
-      "Enter the index of the image (1-10):",
-      [
-        {
-          text: "Cancel",
-          style: "cancel",
-        },
-        {
-          text: "OK",
-          onPress: (index) => {
-            const parsedIndex = parseInt(index, 10) - 1;
-            if (parsedIndex >= 0 && parsedIndex < images.length) {
-              flatListRef.current.scrollToIndex({
-                animated: true,
-                index: parsedIndex,
-                viewPosition: 0.5, 
-              });
-            } else {
-              Alert.alert("Invalid Index", "Please enter a valid index between 1 and 10.");
-            }
-          },
-        },
-      ],
-      "plain-text",
-    );
+    const parsedIndex = parseInt(inputIndex, 10) - 1;
+    if (parsedIndex >= 0 && parsedIndex < images.length) {
+      flatListRef.current.scrollToIndex({
+        animated: true,
+        index: parsedIndex,
+        viewPosition: 0.5,
+      });
+      setVisible(false);
+    } else {
+      Alert.alert("Invalid Index", "Please enter a valid index between 1 and 10.");
+    }
   };
 
   const renderItem = ({ item, index }) => (
@@ -65,7 +54,22 @@ const App = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
       />
-      <Button title="Scroll to Image" onPress={handleScrollToIndex} />
+      <Button title="Scroll to Image" onPress={() => setVisible(true)} />
+
+      <Dialog.Container visible={visible}>
+        <Dialog.Title>Scroll to Image</Dialog.Title>
+        <Dialog.Description>
+          Enter the index of the image (1-10):
+        </Dialog.Description>
+        <Dialog.Input
+          placeholder="Enter The index"
+          keyboardType="numeric"
+          value={inputIndex}
+          onChangeText={setInputIndex}
+        />
+        <Dialog.Button label="Cancel" onPress={() => setVisible(false)} />
+        <Dialog.Button label="OK" onPress={handleScrollToIndex} />
+      </Dialog.Container>
     </View>
   );
 };
@@ -85,4 +89,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Task29;
