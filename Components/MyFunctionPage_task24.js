@@ -4,11 +4,11 @@ import { View, Text, StyleSheet } from 'react-native';
 const MyFunctionPage = forwardRef((props, ref) => {
   const [text, setText] = useState('');
 
-  // Expose `updateText` method to the parent via ref
+
   useImperativeHandle(ref, () => ({
     updateText(newText) {
       setText(newText);
-    },
+    }
   }));
 
   return (

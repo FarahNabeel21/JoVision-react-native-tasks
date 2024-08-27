@@ -24,7 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-//import Task16 from './Tasks/task16';
+import Task16 from './Tasks/task16';
 //import Task18 from './Tasks/task18';
 //import Task20 from './Tasks/task20';
 //import Task21 from './Tasks/task21'
@@ -33,8 +33,12 @@ import {
 //import Task24 from './Tasks/task24'
 //import Task25 from "./Tasks/task25";
 //import Task26 from "./Tasks/task26";
-import Task27 from "./Tasks/task27";
+//import Task27 from "./Tasks/task27";
 import Task from "./Tasks/tasktrain";
+import Task36 from "./Tasks/task36"
+import Task28 from "./Tasks/task28"
+import Task29 from "./Tasks/task29";
+import Task30 from "./Tasks/task30"
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -73,7 +77,7 @@ function App(): React.JSX.Element {
   };
 
   return (
-       // <Task16></Task16>
+        <Task16></Task16>
        // <Task17></Task17>
    // <Task18></Task18>
     //<Task19></Task19>
@@ -84,8 +88,12 @@ function App(): React.JSX.Element {
 //<Task24/>
 //<Task25/>
 //<Task26/>
-<Task27></Task27>
-//<Task></Task>
+//<Task27></Task27>
+//<Task28></Task28>
+//<Task29></Task29>
+//<Task36></Task36>
+//<Task29></Task29>
+//<Task30></Task30>
 );
 }
 

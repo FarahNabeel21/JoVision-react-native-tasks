@@ -1,30 +1,41 @@
-import React, { useState } from 'react';
-import { View, Image, Button, Alert, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, FlatList, Image, Alert, StyleSheet ,TouchableOpacity} from 'react-native';
 
-const Task27 = () => {
-  // State to keep track of the currently displayed image
-  const [currentImage, setCurrentImage] = useState(require('../Resource/image1.jpg'));
+const Task28 = () => {
 
-  // Function to handle button press
-  const handleButtonPress = () => {
-    // Show an alert with options to pick an image
-    Alert.alert(
-      'Choose an Image',
-      'Pick the number of the image you want to display:',
-      [
-        { text: '1', onPress: () => setCurrentImage(require('../Resource/image1.jpg')) },
-        { text: '2', onPress: () => setCurrentImage(require('../Resource/image2.png')) },
-        { text: '3', onPress: () => setCurrentImage(require('../Resource/image3.png')) },
-        { text: 'Cancel', style: 'cancel' },
-      ],
-      { cancelable: true }
-    );
+[image,setimage]= React.useState( [
+    require('../Resource/image1.jpg'),
+    require('../Resource/image2.png'),
+    require('../Resource/image3.png'),
+    require('../Resource/image4.jpg'),
+    require('../Resource/image5.jpg'),
+    require('../Resource/image6.jpg'),
+    require('../Resource/image7.jpeg'),
+    require('../Resource/image8.jpeg'),
+    require('../Resource/image9.png'),
+    require('../Resource/image10.jpeg'),
+  ]);
+
+  const handlePress = (i) => {
+    Alert.alert('You have selected image: ');
   };
+
+
+  const renderItem = ({ item, index }) => (
+    <TouchableOpacity onPress={() => handlePress(index)}>
+      <Image source={item} style={styles.image} />
+    </TouchableOpacity>
+  );
 
   return (
     <View style={styles.container}>
-      <Image source={currentImage} style={styles.image} />
-      <Button title="Choose Image" onPress={handleButtonPress} />
+      <FlatList
+        data={image}
+        renderItem={renderItem}
+        keyExtractor={(index) => index}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      />
     </View>
   );
 };
@@ -36,10 +47,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: 200,
-    height: 200,
-    marginBottom: 20,
+    width: 150,
+    height: 150,
+    marginRight: 10,
+    borderRadius: 8,
+    padding:-6,
+    margin:30,
+  
   },
 });
 
-export default Task27;
+export default Task28;
