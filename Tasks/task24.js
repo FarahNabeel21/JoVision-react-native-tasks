@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { SafeAreaView, View, TextInput, StyleSheet } from 'react-native';
-import MyFunctionPage from '../Components/MyFunctionPage_task24';  // Assuming MyFunctionPage is in the same directory
-
+import MyFunctionPage from '../Components/MyFunctionPage_task24';  
 const Task24 = () => {
   const myFunctionPageRef = useRef(null);
   const [inputText, setInputText] = useState('');
