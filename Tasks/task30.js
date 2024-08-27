@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { View, FlatList, Image, Pressable, Alert, StyleSheet, Button, Text } from 'react-native';
 import Dialog from 'react-native-dialog';
 
-const Task30 = () => {
+export default function Task30() {
   const initialImages = [
     require('../Resource/image1.jpg'),
     require('../Resource/image2.png'),
@@ -131,4 +131,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Task30;
+
