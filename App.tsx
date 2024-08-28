@@ -39,6 +39,7 @@ import Task36 from "./Tasks/task36"
 import Task28 from "./Tasks/task28"
 import Task29 from "./Tasks/task29";
 import Task30 from "./Tasks/task30"
+import Task31 from "./Tasks/task31";
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
@@ -95,7 +96,8 @@ function App(): React.JSX.Element {
 //<Task29></Task29>
 //<Task30></Task30>
 //<Task29></Task29>
-<Task30></Task30>
+<Task31></Task31>
+//<Task></Task>
 );
 }
 

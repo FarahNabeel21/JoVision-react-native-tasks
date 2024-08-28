@@ -21,7 +21,7 @@ numColumns={2}
  data={person}  
 keyExtractor={(item)=>item.index}
 renderItem={({item,index})=>
-    <TouchableOpacity  onPress={()=>{console.log({item,index})}}> 
+    <TouchableOpacity  onPress={()=>{console.log({index,item})}}> 
 <Text style={styles.items}>{item}</Text> 
  </TouchableOpacity> }/>
 
