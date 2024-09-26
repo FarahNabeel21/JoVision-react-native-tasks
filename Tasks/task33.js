@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import Video from 'react-native-video';
 
-const App = () => {
+const Task33 = () => {
   const videoRef = useRef(null);
   const [paused, setPaused] = useState(true);
 
@@ -20,9 +20,9 @@ const App = () => {
           posterResizeMode="cover"
           resizeMode="cover"
           style={styles.video}
-          paused={paused} // Controls whether the video is paused or playing
-          onBuffer={onBuffer} // Optional callback for buffering events
-          onError={videoError} // Optional callback for errors
+          paused={paused} 
+          onBuffer={onBuffer} 
+          onError={videoError}
         />
       </TouchableOpacity>
     </View>
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Task33;
